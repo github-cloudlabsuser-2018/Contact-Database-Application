@@ -81,6 +81,11 @@ namespace CRUD_application_2.Controllers
             // If no user is found with the provided ID, it returns a HttpNotFoundResult.
             // If an error occurs during the process, it returns the Edit view to display any validation errors.
 
+            if (!ModelState.IsValid)
+            {
+                return View(user);
+            }
+
             User existingUser = userlist.FirstOrDefault(u => u.Id == id);
             if (existingUser == null)
             {
@@ -126,6 +131,17 @@ namespace CRUD_application_2.Controllers
             userlist.Remove(user);
 
             return RedirectToAction("Index");
+        }
+
+        // GET: User/Search?searchTerm=example
+        public ActionResult Search(string searchTerm)
+        {
+            // This method is responsible for handling the search functionality in the User management.
+            // It receives a search term and returns a list of users whose name or email matches the search term.
+
+            var result = userlist.Where(u => u.Name.Contains(searchTerm) || u.Email.Contains(searchTerm)).ToList();
+
+            return View(result);
         }
     }
 }
