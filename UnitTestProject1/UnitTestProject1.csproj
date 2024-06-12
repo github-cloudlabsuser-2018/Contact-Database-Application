@@ -79,7 +79,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CRUD application 2.csproj">
+    <ProjectReference Include="..\CRUD application 2\CRUD application 2.csproj">
       <Project>{d44c1c21-0289-4dd0-b139-6825ee5c13b2}</Project>
       <Name>CRUD application 2</Name>
     </ProjectReference>
